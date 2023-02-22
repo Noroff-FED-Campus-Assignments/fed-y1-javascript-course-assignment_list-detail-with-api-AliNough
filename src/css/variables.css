@@ -6,4 +6,7 @@
 
 :root {
   /* Add your CSS variables here */
+
+  --backgr-dark-1: #01191f;
+  --light-blue-1: rgb(32, 87, 110);
 }
