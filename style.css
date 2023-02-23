@@ -14,7 +14,7 @@
 
 body {
   background-color: var(--backgr-dark-1);
-  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 .header-container {
@@ -29,6 +29,10 @@ body {
   background-color: #1e292c;
 
   box-shadow: 0px 5px 20px 0px rgba(174, 220, 235, 0.285);
+
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 .header-container h1 {
   justify-self: center;
@@ -52,4 +56,37 @@ body {
 .header-nav-button:hover {
   border: solid 1px var(--light-blue-1);
   background-color: rgba(32, 87, 110, 0.325);
+}
+
+.content-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 300px);
+  grid-template-rows: 1fr;
+
+  justify-content: space-evenly;
+
+  gap: 10px;
+
+  /* background-color: aqua; */
+}
+
+.cont-holder {
+  height: 100%;
+  width: 100%;
+  background-color: var(--lighter-blue-1);
+  overflow: hidden;
+  border-radius: 4px;
+  margin-top: 40px;
+}
+.cont-holder h3 {
+  font-size: 1.6rem;
+}
+.label-tag {
+  font-weight: 100;
+  color: rgb(28, 28, 28);
+}
+.cont-img {
+  height: max-content;
+  width: 100%;
+  background-color: var(--img-pkaceholder-clr);
 }
