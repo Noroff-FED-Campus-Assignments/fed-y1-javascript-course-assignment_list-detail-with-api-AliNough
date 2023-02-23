@@ -11,3 +11,82 @@
 @import "src/css/layout.css";
 @import "src/css/form.css";
 @import "src/css/ui.css";
+
+body {
+  background-color: var(--backgr-dark-1);
+  overflow-x: hidden;
+}
+
+.header-container {
+  display: grid;
+  grid-template-columns: 20vw 20vw 1fr;
+
+  align-items: center;
+  justify-content: center;
+
+  height: 80px;
+  width: 100vw;
+  background-color: #1e292c;
+
+  box-shadow: 0px 5px 20px 0px rgba(174, 220, 235, 0.285);
+
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.header-container h1 {
+  justify-self: center;
+  color: var(--light-blue-1);
+}
+
+.header-nav-button {
+  font-size: 1.3rem;
+  font-weight: bold;
+
+  min-width: 80px;
+
+  background-color: rgba(32, 72, 94, 0.253);
+
+  border: solid 1px black;
+  border-radius: 5px;
+
+  padding: 10px 10px;
+  margin-left: 10px;
+}
+.header-nav-button:hover {
+  border: solid 1px var(--light-blue-1);
+  background-color: rgba(32, 87, 110, 0.325);
+}
+
+.content-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 300px);
+  grid-template-rows: 1fr;
+
+  justify-content: space-evenly;
+
+  gap: 10px;
+
+  /* background-color: aqua; */
+}
+
+.cont-holder {
+  height: 100%;
+  width: 100%;
+  background-color: var(--lighter-blue-1);
+  overflow: hidden;
+  border-radius: 4px;
+  margin-top: 40px;
+}
+.cont-holder h3 {
+  font-size: 1.6rem;
+}
+.label-tag {
+  font-weight: 100;
+  color: rgb(28, 28, 28);
+}
+.cont-img {
+  height: max-content;
+  width: 100%;
+  background-color: var(--img-pkaceholder-clr);
+}

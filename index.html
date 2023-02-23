@@ -9,18 +9,30 @@
       name="keywords"
       content="HTML, CSS, JavaScript, _REPLACE_WITH_KEYWORD_"
     />
-    <meta name="author" content="_YOUR_NAME_" />
+    <meta name="author" content="Ali" />
     <link rel="stylesheet" href="/style.css" />
+    <script defer src="main.js"></script>
     <!-- TODO: Import Javascript -->
-    <title>_REPLACE_SITE_NAME</title>
+    <title>Rick And Morty | Home</title>
   </head>
   <body class="animate__animated animate__fadeIn">
-    <header class="l-header">
-      <h1>Home</h1>
+    <header>
+      <div class="header-container">
+        <div id="js-nav-button" class="header-nav-button">Nav</div>
+        <h1>Home</h1>
+      </div>
     </header>
 
     <main class="l-main">
       <section role="search"></section>
+
+      <section id="js-content-holder" class="content-container">
+        <div class="loading-holder">
+          <div class="dots dot-1"></div>
+          <div class="dots dot-2"></div>
+          <div class="dots dot-3"></div>
+        </div>
+      </section>
 
       <article role="doc-introduction">
         <h2>List</h2>
@@ -34,7 +46,7 @@
     </main>
 
     <footer class="l-footer">
-      <small>Created with ❤️ by _REPLACE_</small>
+      <small>Created with ❤️ by Ali</small>
     </footer>
   </body>
 </html>
