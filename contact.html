@@ -11,23 +11,59 @@
     />
     <meta name="author" content="_YOUR_NAME_" />
     <link rel="stylesheet" href="/style.css" />
-    <!-- TODO: Import Javascript -->
-    <title>Contact Us | _REPLACE_SITE_NAME</title>
+    <script type="module" defer src="/src/js/contact.js"></script>
+    <title>Contact Us</title>
   </head>
   <body class="animate__animated animate__fadeIn">
-    <header class="l-header">
-      <h1>Contact Us</h1>
+    <header>
+      <section role="search"></section>
+      <div class="header-container">
+        <input
+          id="js-key-input"
+          class="search-field"
+          type="search"
+          placeholder="Search"
+        />
+        <p class="validation-container" data-id="js-validation-message"></p>
+        <div id="js-nav-button" class="header-nav-button">Characters</div>
+        <h2>Home</h2>
+        <a href="/contact.html">
+          <h2>contact</h2>
+        </a>
+      </div>
     </header>
 
     <main class="l-main">
-      <article role="doc-introduction">
-        <h2>Contact form</h2>
-
-        <p>_REPLACE_INTRODUCTION_</p>
-      </article>
+      <p id="js-msg-holder"></p>
 
       <section role="form-section">
-        <!-- TODO: Creat Form elements here -->
+        <form id="js-form" action="">
+          <input
+            type="text"
+            id="js-name-form"
+            name="name"
+            class="form-fields"
+            placeholder="Full name"
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            id="js-email-form"
+            class="form-fields"
+            placeholder="Email"
+            required
+          />
+          <input
+            type="text"
+            id="js-address-form"
+            class="form-fields"
+            name="address"
+            placeholder="Address"
+          />
+          <textarea name="" id="" cols="30" rows="10"></textarea>
+          <input type="submit" name="submit" id="js-submit-form" value="Send" />
+        </form>
       </section>
     </main>
 

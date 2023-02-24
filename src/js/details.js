@@ -5,34 +5,45 @@ Constants
 
 ============================================
 */
-const charNameHolder = document.querySelector("#char-name-holder");
+const charNameHolder = document.querySelector("#js-char-name");
+const pageTitle = document.querySelector("title");
+const contentHolder = document.querySelector("#js-det-cont-holder");
 
 const queryString = document.location.search;
-console.log("query string ::::" + queryString);
-const urlParams = new URLSearchParams(queryString);
-const id = urlParams.get("id");
-console.log("id ::::" + id);
 
-const url = `https://rickandmortyapi.com/api/character/?id=${id}`;
-console.log("url ::::" + url);
+const urlParams = new URLSearchParams(queryString);
+
+const id = urlParams.get("id");
+
+const url = "https://rickandmortyapi.com/api/character/" + id;
 
 async function getData() {
   try {
     const response = await fetch(url);
     const data = await response.json();
-    const results = data.results[id - 1];
 
-    console.log("data..." + results.name);
-
-    makeHTML(results);
+    makeHTML(data);
   } catch (error) {
+    contentHolder.innerHTML = `
+    <h3>No Content Found</h3>`;
     console.warn(error + "error");
   }
 }
 
 function makeHTML(details) {
-//   charNameHolder.innerHTML = details.name;
-  charNameHolder.innerHTML = "fuuyuuuuck";
+  contentHolder.innerHTML = "";
+  console.log(details.name);
+  charNameHolder.innerHTML = details.name;
+  pageTitle.innerHTML = "Rick And Morty | " + details.name;
+  contentHolder.innerHTML = `
+          <img src="${details.image}" class="det-img"></img>
+          <div class="label-tag-container">
+            <h3><span class="det-label-tag">Name:</span> ${details.name}</h3>
+            <h3><span class="det-label-tag">Status:</span> ${details.status}</h3>
+            <h3><span class="det-label-tag">species:</span> ${details.species}</h3>
+            <h3><span class="det-label-tag">Episodes:</span> ${details.episode.length}</h3>
+          </div>
+  `;
 }
 
 getData();
@@ -71,8 +82,8 @@ Helper functions
 ============================================
 */
 
-/**
- * TODO: Create a function to create a DOM element.
- * @example: https://github.com/S3ak/fed-javascript1-api-calls/blob/main/src/js/detail.js#L36
- * @param {item} item The object with properties from the fetched JSON data.
- */
+// /**
+//  * TODO: Create a function to create a DOM element.
+//  * @example: https://github.com/S3ak/fed-javascript1-api-calls/blob/main/src/js/detail.js#L36
+//  * @param {item} item The object with properties from the fetched JSON data.
+//  */
