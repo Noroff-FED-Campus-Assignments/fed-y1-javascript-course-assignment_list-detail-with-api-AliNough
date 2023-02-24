@@ -11,7 +11,7 @@
     />
     <meta name="author" content="Ali" />
     <link rel="stylesheet" href="/style.css" />
-    <script defer src="main.js"></script>
+    <script type="module" defer src="main.js"></script>
     <!-- TODO: Import Javascript -->
     <title>Rick And Morty | Home</title>
   </head>
@@ -41,6 +41,12 @@
             <option name="status" value="dead">Dead</option>
             <option name="status" value="alive">Alive</option>
           </select>
+        </div>
+        <div id="js-ep-holder" class="ep-filter-container">
+          <label for="js-min-ep-input">min Episode</label>
+          <input type="range" id="js-min-ep-input" min="1" max="50" />
+          <h3 id="js-ep-in-value-disp"></h3>
+          <input type="submit" id="js-ep-submit" />
         </div>
       </section>
 

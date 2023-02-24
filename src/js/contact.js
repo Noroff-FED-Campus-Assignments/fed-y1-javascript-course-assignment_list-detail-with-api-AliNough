@@ -15,7 +15,6 @@ const submitEle = document.querySelector("#js-address-form");
 const msgTagHolder = document.querySelector("#js-msg-holder");
 
 const nameRegex = /^[a-zA-Z ]{3,}/;
-// const adrRegex = /^[a-zA-Z0-9 ]{3,}/;
 const min3Char = /^[a-zA-Z0-9 ]{3,}/;
 
 const msgRegex = /^[a-zA-Z0-9]{10,}/;
@@ -24,7 +23,7 @@ const emailRegex =
   /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
 
 formEle.addEventListener("submit", (event) => {
-  console.log("hello");
+  console.log(event);
   event.preventDefault();
 
   const name = nameEle.value;
@@ -32,10 +31,12 @@ formEle.addEventListener("submit", (event) => {
   const adrs = adrEle.value;
   const mssg = msgEle.value;
 
-  const nameValid = mrValidator(name);
-  const emailValid = mrValidator(email);
-  const adrValid = mrValidator(adrs);
-  const mssgValid = mrValidator(mssg);
+  const nameValid = mrValidator(name, nameRegex);
+  const emailValid = mrValidator(email, emailRegex);
+  const adrValid = mrValidator(adrs, min3Char);
+  const mssgValid = mrValidator(mssg, msgRegex);
+
+  msgTagHolder.innerHTML = "";
 
   if (!nameValid) {
     alert("Invalid name");
@@ -44,45 +45,54 @@ formEle.addEventListener("submit", (event) => {
     alert("Invalid email");
     return;
   } else if (!adrValid) {
-    alert("Invalid");
+    alert("Invalid address");
     return;
+  } else if (!mssgValid) {
+    alert("please write a message");
+  } else {
+    alert("Success");
   }
 
   //   submit form function call
 });
 
-const validateName = (event) => mrValidator(event.target, nameRegex);
-// console.log("validateName>>>", validateName());
+const validateName = () => mrValidator(event.target, nameRegex);
+
 nameEle.addEventListener("input", validateName);
 nameEle.addEventListener("blur", validateName);
 
-const validateEmail = (event) => mrValidator(event.target, emailRegex);
+const validateEmail = () => mrValidator(event.target, emailRegex);
 
 emailEle.addEventListener("input", validateEmail);
 emailEle.addEventListener("blur", validateEmail);
 
-const validAdrs = (event) => mrValidator(event.target, min3Char);
+const validAdrs = () => mrValidator(event.target, min3Char);
 
 adrEle.addEventListener("input", validAdrs);
 adrEle.addEventListener("blur", validAdrs);
 
 function mrValidator(field, regex, error) {
   const value = field.value.trim();
-  const validationMessageEl = field.parentNode.querySelector("[data-id]");
+  const validationMsgEl = field.parentNode.querySelector("[data-id]");
 
   if (regex.test(value) && value !== "") {
     field.classList.add("is-valid");
     field.classList.remove("not-valid");
 
-    // displayError(validationMessageEl);
+    // displayError(validationMsgEl);
+    dispValidationMsg(validationMsgEl, "success");
     return true;
   } else {
     field.classList.add("not-valid");
     field.classList.remove("is-valid");
 
-    // displayError(validationMessageEl, error || "Please enter a valid value");
+    dispValidationMsg(validationMsgEl, error || "Please enter a valid value");
     return false;
   }
+}
+
+function dispValidationMsg(validationMsgEl, msg = "invalid") {
+  validationMsgEl.innerHTML = "this is a text";
 }
 
 // TODO: Create event listeners for the form

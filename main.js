@@ -1,7 +1,10 @@
 const contentHolder = document.querySelector("#js-content-holder");
 const charStatus = document.querySelector("#js-status");
 const keyInput = document.querySelector("#js-key-input");
-console.log(charStatus);
+const minEpInput = document.querySelector("#js-min-ep-input");
+const epValueHolder = document.querySelector("#js-ep-in-value-disp");
+const epSubmitBtn = document.querySelector("#js-ep-submit-btn");
+// console.log(charStatus);
 
 const url = "https://rickandmortyapi.com/api/character";
 console.log(url);
@@ -14,19 +17,27 @@ charStatus.addEventListener("change", function () {
   fetchData(keyInput.value, this.value);
   console.log(charStatus.value);
 });
+minEpInput.addEventListener("change", (e) => {
+  console.log(minEpInput.value);
+  epValueHolder.innerHTML = minEpInput.value;
+  fetchData(keyInput.value, charStatus.value, minEpInput.value);
+});
 
-async function fetchData(keyInput, charStatus) {
+// epSubmitBtn.addEventListener("click", (e) => {});
+
+async function fetchData(keyInput, charStatus, epInput = "") {
   try {
     const response = await fetch(url);
     const data = await response.json();
-    console.log(data);
-    console.log(charStatus);
+    // console.log(data);
+    // console.log(charStatus);
+    console.log(epInput);
 
     const dataResults = data.results;
-    console.log("data results>>>>" + dataResults);
+    // console.log("data results>>>>" + dataResults);
 
     const filteredContent = dataResults.filter(function (cont) {
-      if (!charStatus) {
+      if (!charStatus && !epInput) {
         return cont;
       } else if (charStatus !== "all") {
         return (
@@ -39,12 +50,13 @@ async function fetchData(keyInput, charStatus) {
 
     contentHolder.innerHTML = "";
 
-    console.log("filtered content >>>>" + filteredContent);
+    // console.log("filtered content >>>>" + filteredContent);
 
     filteredContent.forEach((contIN) => {
       contentHolder.innerHTML += `
       <a href="/details.html?id=${contIN.id}" class="cont-holder">
           <img src="${contIN.image}" class="cont-img"></img>
+          <h3><span class="label-tag">ID:</span>  ${contIN.id}</h3>
           <h3><span class="label-tag">Name:</span>  ${contIN.name}</h3>
       </a>
       `;
