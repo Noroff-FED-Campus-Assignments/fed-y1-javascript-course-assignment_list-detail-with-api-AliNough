@@ -34,11 +34,14 @@
         </div>
       </header>
       <section class="input-container">
-        <select name="status" id="js-status">
-          <option name="status" value="all">All</option>
-          <option name="status" value="dead">Dead</option>
-          <option name="status" value="alive">Alive</option>
-        </select>
+        <div class="status-container">
+          <h3>Status:</h3>
+          <select name="status" id="js-status" class="options-cont">
+            <option name="status" value="all">All</option>
+            <option name="status" value="dead">Dead</option>
+            <option name="status" value="alive">Alive</option>
+          </select>
+        </div>
       </section>
 
       <section id="js-content-holder" class="content-container">

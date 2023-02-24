@@ -24,6 +24,7 @@ const emailRegex =
   /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
 
 formEle.addEventListener("submit", (event) => {
+  console.log("hello");
   event.preventDefault();
 
   const name = nameEle.value;
@@ -50,17 +51,17 @@ formEle.addEventListener("submit", (event) => {
   //   submit form function call
 });
 
-const validateName = () => mrValidator(event.target, nameRegex);
-
+const validateName = (event) => mrValidator(event.target, nameRegex);
+// console.log("validateName>>>", validateName());
 nameEle.addEventListener("input", validateName);
 nameEle.addEventListener("blur", validateName);
 
-const validateEmail = () => mrValidator(event.target, emailRegex);
+const validateEmail = (event) => mrValidator(event.target, emailRegex);
 
 emailEle.addEventListener("input", validateEmail);
 emailEle.addEventListener("blur", validateEmail);
 
-const validAdrs = () => mrValidator(event.target, min3Char);
+const validAdrs = (event) => mrValidator(event.target, min3Char);
 
 adrEle.addEventListener("input", validAdrs);
 adrEle.addEventListener("blur", validAdrs);
@@ -70,16 +71,16 @@ function mrValidator(field, regex, error) {
   const validationMessageEl = field.parentNode.querySelector("[data-id]");
 
   if (regex.test(value) && value !== "") {
-    field.classList.add("is-success");
-    field.classList.remove("is-error");
+    field.classList.add("is-valid");
+    field.classList.remove("not-valid");
 
-    displayError(validationMessageEl);
+    // displayError(validationMessageEl);
     return true;
   } else {
-    field.classList.add("is-error");
-    field.classList.remove("is-success");
+    field.classList.add("not-valid");
+    field.classList.remove("is-valid");
 
-    displayError(validationMessageEl, error || "Please enter a valid value");
+    // displayError(validationMessageEl, error || "Please enter a valid value");
     return false;
   }
 }

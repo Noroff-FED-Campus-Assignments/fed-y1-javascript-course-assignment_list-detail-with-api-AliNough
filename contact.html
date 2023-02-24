@@ -16,28 +16,19 @@
   </head>
   <body class="animate__animated animate__fadeIn">
     <header>
-      <section role="search"></section>
       <div class="header-container">
-        <input
-          id="js-key-input"
-          class="search-field"
-          type="search"
-          placeholder="Search"
-        />
-        <p class="validation-container" data-id="js-validation-message"></p>
-        <div id="js-nav-button" class="header-nav-button">Characters</div>
-        <h2>Home</h2>
-        <a href="/contact.html">
-          <h2>contact</h2>
+        <a href="/index.html">
+          <div id="js-nav-button" class="header-nav-button">Back</div>
         </a>
+        <h2 id="js-char-name">Contact</h2>
       </div>
     </header>
 
     <main class="l-main">
       <p id="js-msg-holder"></p>
 
-      <section role="form-section">
-        <form id="js-form" action="">
+      <section class="form-section" role="form-section">
+        <form class="form-container" id="js-form" action="">
           <input
             type="text"
             id="js-name-form"
@@ -61,8 +52,20 @@
             name="address"
             placeholder="Address"
           />
-          <textarea name="" id="" cols="30" rows="10"></textarea>
-          <input type="submit" name="submit" id="js-submit-form" value="Send" />
+          <textarea
+            name=""
+            class="form-fields"
+            id=""
+            cols="30"
+            rows="10"
+          ></textarea>
+          <input
+            type="submit"
+            class="submit"
+            name="submit"
+            id="js-submit-form"
+            value="Send"
+          />
         </form>
       </section>
     </main>
